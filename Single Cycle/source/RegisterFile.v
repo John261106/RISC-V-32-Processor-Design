@@ -5,8 +5,8 @@ module RegisterFIle(
     input wire [4:0] A2,
     input wire [4:0] A3,
     input wire [31:0] WD3,
-    output reg [31:0] RD1,
-    output reg [31:0] RD2
+    output wire [31:0] RD1,
+    output wire [31:0] RD2
 );//reset to be added
 
 reg [31:0] x [31:0];
