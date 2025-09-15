@@ -18,5 +18,7 @@ always @ (posedge CLK) begin
         x[A3]<=WD3;
     end
 end
+
+//some registers are reserved --look into that and change accordingly 
 endmodule
 
