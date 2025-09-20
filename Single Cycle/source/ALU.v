@@ -23,7 +23,6 @@ case(ALUControl)
     3'b111 : ALUResult = SrcA & SrcB;
     3'b011 : ALUResult = SrcA | SrcB;
     3'b101 : ALUResult = (SrcA < SrcB) ? 1 : 0
-    3'b011 : ALUresult = {SrcA[31:16], SrcB[0:15]};
     //credits to vighnesh for this mind blowing ass instruction
     default : ALUResult = SrcA + SrcB;
     //should we put default as zero ?

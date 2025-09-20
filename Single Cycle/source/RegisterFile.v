@@ -11,16 +11,18 @@ module RegisterFile(
 );
 
     reg [31:0] x [31:0];
+    integer i;
 
     //Only assigns if A1,A2 not equal to zero
-     RD1 = (A1 == 5'd0) ? 32'b0 : x[A1];
-     RD2 = (A2 == 5'd0) ? 32'b0 : x[A2];
+    always @(*) begin
+    	RD1 = (A1 == 5'd0) ? 32'b0 : x[A1];
+    	RD2 = (A2 == 5'd0) ? 32'b0 : x[A2];
+    end
 
     
     always @ (posedge CLK) begin
         if (!RST) begin
             //On RST all register set to 32'b0
-            integer i;
             for (i = 0; i < 32; i = i + 1) begin
                 x[i] <= 32'b0;
             end
