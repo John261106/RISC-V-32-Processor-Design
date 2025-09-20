@@ -15,16 +15,16 @@ Below is the complete single-cycle processor datapath:
 ---
 
 ##  Main Decoder Truth Table
-The following truth table defines the **control signals** for each instruction type:  
+Below is the main decoder truth table:  
 
 ![Main Decoder Truth Table](images/main_decoder_truth_table.jpeg)
 
 ---
 
-##  Instruction Set
-We are using a subset of the **RISC-V RV32I** instruction set in this project:  
+##  ALU Decoder Truth Table
+Below is the ALU decoder truth tabe:  
 
-![Instruction Set](images/instructions.jpeg)
+![Instruction Set](images/alu_decoder_truth_table.jpeg)
 
 
 
