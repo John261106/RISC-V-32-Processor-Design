@@ -16,6 +16,7 @@ always @(*) begin
         2'b10: begin
             case (funct3)
                 3'b000: begin
+                //shall we use casex or casez ?
                 case ({op, funct7})
                     2'b00 : ALUControl = 3'b000; //add
                     2'b01 : ALUControl = 3'b000; //add
