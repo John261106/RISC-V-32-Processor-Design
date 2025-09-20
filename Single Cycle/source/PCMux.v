@@ -1,5 +1,5 @@
 //MUX module for PC
-module pcMux(
+module PCMux(
 input wire PCSrc,
 input wire [31:0] PCPlus4,
 input wire [31:0] PCTarget,

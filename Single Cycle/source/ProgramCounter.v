@@ -1,5 +1,5 @@
 //program counter module --Rishi
-module pc(
+module PC(
 input wire CLK,
 input wire RST,//active low reset synchronous
 input wire [31:0] PCNext,

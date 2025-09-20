@@ -1,7 +1,7 @@
 module ALUDecoder(
 input wire[2:0] funct3,
-input wire[5:5] funct7,
-input wire [5:5] op,
+input wire funct7,
+input wire  op,
 input wire [1:0] ALUOp,
 output reg [2:0] ALUControl
 );
