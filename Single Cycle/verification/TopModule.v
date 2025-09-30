@@ -60,8 +60,6 @@ ALUDecoder ALUDecoder1(
 
 //BranchJump
 BranchJump BranchJump1(
-.Branch(Branch),
-.Zero(Zero),
 .PCSrc(PCSrc)
 );
 
@@ -96,10 +94,10 @@ MainDecoder MainDecoder1(
 .ResultSrc(ResultSrc),
 .MemWrite(MemWrite),
 .ALUOp(ALUOp),
-.ALUControl(ALUControl),
 .Branch(Branch),
 .RegWrite(RegWrite),
-.ALUSrc(ALUSrc)
+.ALUSrc(ALUSrc),
+.ImmSrc(ImmSrc)
 ); //check main decoder again
 
 //PC Mux
@@ -113,7 +111,7 @@ PCMux PCMux1(
 //PCPlus4
 PCAdd4 PCAdd41(
 .PC(PC),
-.PCPlus4(PCPlsu4)
+.PCPlus4(PCPlus4)
 );
 
 //PCPlusImm

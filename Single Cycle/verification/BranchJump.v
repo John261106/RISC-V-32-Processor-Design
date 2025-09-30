@@ -1,8 +1,9 @@
 module BranchJump(
-input wire Branch,
-input wire Zero,
 output reg PCSrc
 );
+
+wire Branch;
+wire Zero;
 
 MainDecoder MDInst(
 .Branch(Branch)

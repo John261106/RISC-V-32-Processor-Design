@@ -36,7 +36,7 @@ module TopModule_tb;
 
     initial begin
     $dumpfile("waveform.vcd");   // Name of the VCD file
-    $dumpvars(0, TopModule);     // Dump all signals in TopModule
+    $dumpvars(0, uut);     // Dump all signals in TopModule
     end
 
 
