@@ -37,7 +37,7 @@ Below is the ALU decoder truth tabe:
 ## How do we simulate the design ?
 
 install iverilog and gtkwave on your machine and then hit the following command
-
+'''bash
 iverilog -o simv \
 ALU.v ALUDecoder.v BranchJump.v DataMemory.v Extend.v InstructionMemory.v \
 MainDecoder.v PCMux.v PCPlus4.v PCPlusImm.v ProgramCounter.v \
