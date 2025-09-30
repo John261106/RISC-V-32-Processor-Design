@@ -55,7 +55,6 @@ case (op)
             Branch = 1'b1;
         end
 
-        end
     endcase
 end
 
