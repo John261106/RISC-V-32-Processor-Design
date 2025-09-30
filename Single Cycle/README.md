@@ -38,5 +38,7 @@ Below is the ALU decoder truth tabe:
 
 install iverilog and gtkwave on your machine and then hit the following command
 
-'''
-iverilog -o simv ALU.v ALUDecoder.v BranchJump.v DataMemory.v Extend.v InstructionMemory.v MainDecoder.v PCMux.v PCPlus4.v PCPlusImm.v ProgramCounter.v RegisterFile.v SrcBMux.v testbench.v TopModule.v
+iverilog -o simv \
+ALU.v ALUDecoder.v BranchJump.v DataMemory.v Extend.v InstructionMemory.v \
+MainDecoder.v PCMux.v PCPlus4.v PCPlusImm.v ProgramCounter.v \
+RegisterFile.v SrcBMux.v testbench.v TopModule.v
