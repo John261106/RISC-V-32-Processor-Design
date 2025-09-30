@@ -9,8 +9,9 @@ module DataMemory(
 //32 32bit data memory
 reg [31:0] x [31:0];
 
-
- RD=x[A];
+always@(*) begin
+RD=x[A];
+end
 
 always @ (posedge CLK) begin
     if (!RST) begin

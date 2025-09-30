@@ -5,11 +5,11 @@ output reg PCSrc
 );
 
 MainDecoder MDInst(
-.Branch(Branch);
+.Branch(Branch)
 );
 
 ALU ALUInst(
-.Zero(Zero);
+.Zero(Zero)
 );
 
 PCMux PCMuxInst(
