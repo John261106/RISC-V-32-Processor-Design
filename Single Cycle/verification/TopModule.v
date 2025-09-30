@@ -72,12 +72,11 @@ DataMemory DataMemory1(
 .A(A),
 .WD(WD),
 .RST(RST),
-.RD1(RD1)
+.RD(RD)
 );
 
 //Extend
 Extend Extend1(
-.Imm(Imm),
 .ImmSrc(ImmSrc),
 .ImmExt(ImmExt)
 );
