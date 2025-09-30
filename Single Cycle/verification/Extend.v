@@ -9,7 +9,7 @@ output reg [31:0] ImmExt
     //For B type imm=Instr[31,30:25,11:8,7]
     wire RD[31:0];
 
-    .InstructionMemory IMInst(
+    InstructionMemory IMInst(
     .RD(RD)
     );
 
