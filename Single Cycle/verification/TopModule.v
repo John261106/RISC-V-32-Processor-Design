@@ -1,12 +1,11 @@
 module TopModule(
-input CLK,
-input RST
+input wire CLK,
+input wire RST
 );
 //VERY IMPORTANT NOTE : we want 5th bit of funct7 for the present design
 //
 // Clock and Reset
-wire CLK;
-wire RST;         // active low reset synchronous
+         // active low reset synchronous
 
 // Program Counter logic
 wire [31:0] PC, PCNext, PCPlus4, PCTarget;
@@ -30,7 +29,7 @@ wire Zero;
 // Control Unit
 wire [6:0] op;
 wire [2:0] funct3;
-wire funct7; //we are considering only one bit of funct7, for the basic instruction set we planned to implement that is enough for now
+wire [6:0] funct7; //we are considering only one bit of funct7, for the basic instruction set we planned to implement that is enough for now
 wire RegWrite, ALUSrc, MemWrite, Branch;
 wire [1:0] ResultSrc;
 wire [1:0] ALUOp;
@@ -130,7 +129,7 @@ PC PC1(
 .CLK(CLK),
 .RST(RST),
 .PCNext(PCNext)
-)
+);
 
 RegisterFile RegisterFile1(
 .CLK(CLK),
@@ -144,7 +143,7 @@ RegisterFile RegisterFile1(
 .RD2(RD2)
 );
 
-SrcBMux (
+SrcBMux SrcBMux1 (
 .RD2(RD2),
 .ImmExt(ImmExt),
 .ALUSrc(ALUSrc),

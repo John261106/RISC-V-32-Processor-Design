@@ -28,10 +28,10 @@ module TopModule_tb;
         RST = 1;
         #100
 
-        RST = 0
+        RST = 0;
         #20
         // Finish simulation
-        $stop;
+        $finish;
     end
 
     initial begin
