@@ -4,7 +4,7 @@ module BranchJump(
     output reg PCSrc
 );
 
- PCSrc = Branch & Zero;
+    PCSrc = Branch & Zero;
 
 endmodule
 
