@@ -25,6 +25,7 @@ module RegisterFile(
             //On RST all register set to 32'b0
             for (i = 0; i < 32; i = i + 1) begin
                 x[i] <= 32'b0;
+                x[9] = 16'h2004;
             end
         end 
         else if (WE3 && (A3 != 5'd0)) begin
