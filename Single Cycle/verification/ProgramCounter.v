@@ -1,4 +1,4 @@
-//program counter module --Rishi
+//program counter module 
 module PC(
 input wire CLK,
 input wire RST,//active low reset synchronous

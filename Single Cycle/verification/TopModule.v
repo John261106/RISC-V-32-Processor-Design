@@ -5,7 +5,7 @@ input wire RST
 //VERY IMPORTANT NOTE : we want 5th bit of funct7 for the present design
 //
 // Clock and Reset
-         // active low reset synchronous
+// active low reset synchronous
 
 // Program Counter logic
 wire [31:0] PC, PCNext, PCPlus4, PCTarget;

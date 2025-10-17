@@ -1,4 +1,4 @@
-//Module to increment PC by 4 --Rishi
+//Module to increment PC by 4 
 module PCAdd4(
 input wire [31:0] PC,
 output reg [31:0] PCPlus4
