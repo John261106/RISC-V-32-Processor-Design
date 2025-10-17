@@ -19,7 +19,7 @@ always @ (posedge CLK) begin
     if (!RST) begin
         //On RST all register set to 32'b0
         for (i = 0; i < 32; i = i + 1) begin
-            x[i] <= 32'b0;
+            x[i] <= 4'b1010;
         end
     end 
     else if (WE) begin
