@@ -14,7 +14,7 @@ wire PCSrc;
 // Register File
 wire WE3;         // write enable for regfile
 wire [4:0]  A1, A2, A3;  // register addresses
-wire [31:0] WD3, RD1, RD2;
+wire [31:0] WD3, RD1, RD2, RD3;
 
 // Immediate Generator
 wire [24:0] Imm;
@@ -37,7 +37,7 @@ wire [1:0] ALUOp;
 
 // Data Memory
 wire WE;          // memory write enable
-wire [31:0] A, WD, RD;
+wire [31:0] A, WD, RD; 
 
 
 //ALU
@@ -76,7 +76,8 @@ DataMemory DataMemory1(
 //Extend
 Extend Extend1(
 .ImmSrc(ImmSrc),
-.ImmExt(ImmExt)
+.ImmExt(ImmExt),
+.Imm(RD[31:7])
 );
 
 //instruction memory
