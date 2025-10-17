@@ -1,10 +1,10 @@
 module BranchJump(
     input wire Branch,
     input wire Zero,
-    output wire PCSrc
+    output reg PCSrc
 );
 
-    assign PCSrc = Branch & Zero;
+ PCSrc = Branch & Zero;
 
 endmodule
 
