@@ -14,7 +14,7 @@ wire PCSrc;
 // Register File
 wire WE3;         // write enable for regfile
 wire [4:0]  A1, A2, A3;  // register addresses
-wire [31:0] WD3, RD1, RD2, RD3;
+wire [31:0] WD3, RD1, RD2;
 
 // Immediate Generator
 wire [24:0] Imm;
@@ -37,7 +37,7 @@ wire [1:0] ALUOp;
 
 // Data Memory
 wire WE;          // memory write enable
-wire [31:0] A, WD, RD; 
+wire [31:0] A, RD3; 
 
 
 //ALU
@@ -60,6 +60,8 @@ ALUDecoder ALUDecoder1(
 
 //BranchJump
 BranchJump BranchJump1(
+.Branch(Branch),
+.Zero(Zero),
 .PCSrc(PCSrc)
 );
 
@@ -68,16 +70,16 @@ DataMemory DataMemory1(
 .CLK(CLK),
 .WE(WE),
 .A(A),
-.WD(WD),
+.WD(RD2),//WD same as RD2
 .RST(RST),
-.RD(RD)
+.RD3(RD3)
 );
 
 //Extend
 Extend Extend1(
+.Imm(RD[31:7]),
 .ImmSrc(ImmSrc),
-.ImmExt(ImmExt),
-.Imm(RD[31:7])
+.ImmExt(ImmExt)
 );
 
 //instruction memory
@@ -110,7 +112,7 @@ PCMux PCMux1(
 );
 
 //PCPlus4
-PCAdd4 PCAdd41(
+PCPlus4 PCPlus41(
 .PC(PC),
 .PCPlus4(PCPlus4)
 );
@@ -126,7 +128,8 @@ PCPlusImm PCPlusImm1(
 PC PC1(
 .CLK(CLK),
 .RST(RST),
-.PCNext(PCNext)
+.PCNext(PCNext),
+.PC(PC)
 );
 
 RegisterFile RegisterFile1(
@@ -147,5 +150,13 @@ SrcBMux SrcBMux1 (
 .ALUSrc(ALUSrc),
 .SrcB(SrcB)
 );
+
+ResultMux ResultMux1 (
+    .ALUResult(ALUResult),
+    .ReadData(RD3),
+    .ResultSrc(ResultSrc),
+    .Result(WD3)
+);
+
 
 endmodule
