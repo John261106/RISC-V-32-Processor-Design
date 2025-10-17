@@ -10,7 +10,7 @@ module DataMemory(
 reg [31:0] x [31:0];
 
 always@(*) begin
-RD=x[A];
+RD3=x[A];
 end
 
 integer i;

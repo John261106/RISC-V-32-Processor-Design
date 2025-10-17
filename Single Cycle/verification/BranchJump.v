@@ -4,9 +4,8 @@ module BranchJump(
     output reg PCSrc
 );
 
+always @(*) begin
     PCSrc = Branch & Zero;
+end
 
 endmodule
-
-
-//checked

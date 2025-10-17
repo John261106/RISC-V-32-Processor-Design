@@ -11,6 +11,9 @@ input wire RST
 wire [31:0] PC, PCNext, PCPlus4, PCTarget;
 wire PCSrc;
 
+//Instruction Memory
+wire [31:0] RD;
+
 // Register File
 wire WE3;         // write enable for regfile
 wire [4:0]  A1, A2, A3;  // register addresses
@@ -31,7 +34,7 @@ wire [6:0] op;
 wire [2:0] funct3;
 wire [6:0] funct7; //we are considering only one bit of funct7, for the basic instruction set we planned to implement that is enough for now
 wire RegWrite, ALUSrc, MemWrite, Branch;
-wire [1:0] ResultSrc;
+wire  ResultSrc;
 wire [1:0] ALUOp;
 
 
@@ -84,7 +87,7 @@ Extend Extend1(
 
 //instruction memory
 InstructionMemory InstructionMemory1(
-.A(A),
+.A(PC),
 .RD(RD)
 );
 
