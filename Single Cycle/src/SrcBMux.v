@@ -6,9 +6,10 @@ module SrcBMux (
 );
 always@(*) begin
 case(ALUSrc)
-    1'b0 : SrcB <= ImmExt;
-    1'b1 : SrcB <= RD2;
+    1'b0 : SrcB <= RD2;
+    1'b1 : SrcB <= ImmExt;
     default : SrcB <=RD2; //deafult RD2
 endcase
 end 
 endmodule
+//checked

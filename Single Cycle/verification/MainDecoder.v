@@ -1,6 +1,6 @@
 module MainDecoder(
 input wire [6:0] op,
-output reg [1:0] ResultSrc,
+output reg ResultSrc,
 output reg MemWrite,
 output reg [1:0] ALUOp,
 output reg ALUSrc,
@@ -23,6 +23,7 @@ case (op)
             ALUSrc = 1'b1; //imm
             ResultSrc =1'b1; //write back
             Branch = 1'b0;
+            //KING LORD WORD USES ALL THE CONTROLS :) hehe
         end
 
         //sw
@@ -33,6 +34,7 @@ case (op)
             ALUOp = 2'b00;
             ALUSrc = 1'b1; //imm
             Branch = 1'b0;
+            //ResultSrc = 1'bx are we supposed to do like this or just leave
         end
 
         // R-Type - ADD,OR,AND,SUB,LST
@@ -43,6 +45,7 @@ case (op)
             Branch = 1'b0;
             ALUSrc = 1'b0; //reg2
             ResultSrc = 1'b0; //alu_result
+            //ImmSrc = 2'bxx are we supposed to do like this or just leave
         end
 
         //beq
@@ -53,6 +56,7 @@ case (op)
             MemWrite = 1'b0;
             ALUOp = 2'b01;
             Branch = 1'b1;
+            //ResultSrc = 1'bx are we supposed to do like this or just leave
         end
 
     endcase
