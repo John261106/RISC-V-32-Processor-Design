@@ -18,7 +18,7 @@ integer i;
 always @ (posedge CLK) begin
     if (!RST) begin
         for (i = 0; i < 32; i = i + 1) begin
-            x[i] <= 32'd0;  // ✓ Set to 0 (or keep 32'd10 if that's intended)
+         x[i] <= 32'b00000000000000000000000000001010;  // ✓ Set to 0 (or keep 32'd10 if that's intended)
         end
     end 
     else if (WE) begin
