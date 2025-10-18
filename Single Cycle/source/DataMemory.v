@@ -4,7 +4,7 @@ module DataMemory(
     input wire [31:0] A,
     input wire [31:0] WD,
     input wire RST, //active low reset synchronous
-    output reg [31:0] RD1
+    output reg [31:0] RD3
 );
 //32 32bit data memory
 reg [31:0] x [31:0];
