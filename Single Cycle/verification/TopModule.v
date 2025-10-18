@@ -15,7 +15,7 @@ wire PCSrc;
 wire [31:0] RD;
 
 // Register File
-wire WE3;         // write enable for regfile
+        // write enable for regfile
 wire [4:0]  A1, A2, A3;  // register addresses
 wire [31:0] WD3, RD1, RD2;
 
@@ -39,7 +39,7 @@ wire [1:0] ALUOp;
 
 
 // Data Memory
-wire WE;          // memory write enable
+          // memory write enable
 wire [31:0] A_DM, RD3; 
 
 
@@ -71,7 +71,7 @@ BranchJump BranchJump1(
 //DataMemory
 DataMemory DataMemory1(
 .CLK(CLK),
-.WE(WE),
+.WE(MemWrite),
 .A_DM(ALUResult),
 .WD(RD2),//WD same as RD2
 .RST(RST),
@@ -138,7 +138,7 @@ PC PC1(
 RegisterFile RegisterFile1(
 .CLK(CLK),
 .RST(RST), //active-low reset synchronous
-.WE3(WE3),
+.WE3(RegWrite),
 .A1(RD[19:15]), //only for R,I,S,B type
 .A2(RD[24:20]), //only for R,S,B type
 .A3(RD[11:7]), //only for R,I
