@@ -22,14 +22,13 @@ module TopModule_tb;
     initial begin
         // Initialize inputs
         RST = 0;
-        #30;
+        #10;
 
         // Apply reset
         RST = 1;
-        #100
+        #60
 
-        RST = 0;
-        #20
+       
         // Finish simulation
         $finish;
     end
