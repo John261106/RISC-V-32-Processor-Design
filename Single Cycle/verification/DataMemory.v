@@ -1,7 +1,7 @@
 module DataMemory(
     input wire CLK,
     input wire WE,
-    input wire [31:0] A,
+    input wire [31:0] A_DM,//2 A were there changed it 
     input wire [31:0] WD,
     input wire RST, //active low reset synchronous
     output reg [31:0] RD3
@@ -10,7 +10,7 @@ module DataMemory(
 reg [31:0] x [31:0];
 
 always@(*) begin
-RD3=x[A];
+RD3=x[A_DM];
 end
 
 integer i;
