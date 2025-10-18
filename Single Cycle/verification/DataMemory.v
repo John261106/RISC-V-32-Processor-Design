@@ -23,7 +23,7 @@ always @ (posedge CLK) begin
         end
     end 
     else if (WE) begin
-        x[A] <= WD;
+        x[A_DM] <= WD;
     end
 end
 
