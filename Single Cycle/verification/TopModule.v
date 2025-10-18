@@ -40,7 +40,7 @@ wire [1:0] ALUOp;
 
 // Data Memory
 wire WE;          // memory write enable
-wire [31:0] A, RD3; 
+wire [31:0] A_DM, RD3; 
 
 
 //ALU
@@ -72,7 +72,7 @@ BranchJump BranchJump1(
 DataMemory DataMemory1(
 .CLK(CLK),
 .WE(WE),
-.A(A),
+.A_DM(ALUResult),
 .WD(RD2),//WD same as RD2
 .RST(RST),
 .RD3(RD3)
