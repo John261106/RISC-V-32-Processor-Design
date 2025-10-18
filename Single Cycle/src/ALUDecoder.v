@@ -16,7 +16,7 @@ always @(*) begin
         2'b10: begin
             case (funct3)
                 3'b000: begin
-                //shall we use casex or casez ?
+                //shall we use casex or casez ? casex is not synthesizable; casez is synthesizable
                 case ({op[5], funct7[5]}) //check if it is funct7[5] or is it otherway
                     2'b00 : ALUControl = 3'b000; //add
                     2'b01 : ALUControl = 3'b000; //add
