@@ -25,7 +25,7 @@ wire [1:0] ImmSrc;
 wire [31:0] ImmExt;
 
 // ALU
-wire [31:0] SrcA, SrcB, ALUResult;
+wire [31:0]  SrcB, ALUResult;
 wire [2:0] ALUControl;
 wire Zero;
 
@@ -45,7 +45,7 @@ wire [31:0] A, RD3;
 
 //ALU
 ALU ALU1(
-.SrcA(SrcA),
+.SrcA(RD1),//connected RD1 and SrcA
 .SrcB(SrcB),
 .ALUControl(ALUControl),
 .ALUResult(ALUResult),
