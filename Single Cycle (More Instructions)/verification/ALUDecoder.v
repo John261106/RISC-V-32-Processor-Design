@@ -7,31 +7,38 @@ output reg [2:0] ALUControl
 );
 
 //supports lw,sw,beq,add,sub,slt,or,and
-//blindly followed DDCA Harris and Harris
+//followed the official RISC V card and did this, may seem use of huge hardware but fine
 
 always @(*) begin
-    case (ALUOp)
-        2'b00: ALUControl = 3'b000; //add
-        2'b01: ALUControl = 3'b001; //sub
-        2'b10: begin
-            case (funct3)
-                3'b000: begin
-                //shall we use casex or casez ? casex is not synthesizable; casez is synthesizable
-                case ({op[5], funct7[5]}) //check if it is funct7[5] or is it otherway
-                    2'b00 : ALUControl = 3'b000; //add
-                    2'b01 : ALUControl = 3'b000; //add
-                    2'b10 : ALUControl = 3'b000; //add
-                    2'b11 : ALUControl = 3'b001; //sub
-                endcase
-                end
+    casez ({op, funct3, funct7}) // casez allows ?/x as wildcards
 
-                3'b010: ALUControl = 3'b101; //set less than
-                3'b110: ALUControl = 3'b011; //or
-                3'b111: ALUControl = 3'b010; //and
-                default: ALUControl = 3'b000;
-            endcase
-        end
-        default: ALUControl = 3'b000;
+        // ---------------- R-type Instructions ----------------
+        17'b0110011_000_0000000: ALUCtrl = 3'b000; // ADD
+        17'b0110011_000_0100000: ALUCtrl = 3'b001; // SUB
+        17'b0110011_100_0000000: ALUCtrl = 3'b010; // XOR
+        17'b0110011_110_0000000: ALUCtrl = 3'b011; // OR
+        17'b0110011_111_0000000: ALUCtrl = 3'b111; // AND
+        17'b0110011_001_0000000: ALUCtrl = 3'b100; // SLL
+        17'b0110011_101_0000000: ALUCtrl = 3'b110; // SRL
+	17'b0110011_010_0000000: ALUCtrl = 3'b101  // SLT
+	
+        // ---------------- B-type Instructions ----------------
+        17'b1100011_000_???????: ALUCtrl = 3'b001; // SUB used for beq
+        17'b1100011_100_???????: ALUCtrl = 3'b001; // SUB used for blt
+        17'b1100011_101_???????: ALUCtrl = 3'b001; // SUB used for bge
+        
+        // ---------------- I-type Instructions ----------------
+        17'b0010011_000_???????: ALUCtrl = 3'b000; // ADDI
+        17'b0010011_100_???????: ALUCtrl = 3'b010; // XORI
+        17'b0010011_110_???????: ALUCtrl = 3'b011; // ORI
+        17'b0010011_111_???????: ALUCtrl = 3'b100; // ANDI
+        17'b1100111_000_???????: ALUCtrl = 3'b000; // ADD used for jalr
+
+        // ------------------------------------------------------
+        default: ALUCtrl = 3'bxxx; // Undefined operation
+
     endcase
 end
+
+
 endmodule
