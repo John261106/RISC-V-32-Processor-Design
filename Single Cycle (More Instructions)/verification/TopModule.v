@@ -28,6 +28,7 @@ wire [31:0] ImmExt;
 wire [31:0]  SrcB, ALUResult;
 wire [2:0] ALUControl;
 wire Zero;
+wire Negative;
 
 // Control Unit
 wire [6:0] op;
@@ -36,7 +37,8 @@ wire [6:0] funct7; //we are considering only one bit of funct7, for the basic in
 wire RegWrite, ALUSrc, MemWrite, Branch;
 wire  [1:0]ResultSrc;
 wire [1:0] ALUOp;
-
+//Branch Decoder
+wire [1:0] Cond_Src;
 
 // Data Memory
           // memory write enable
@@ -49,7 +51,8 @@ ALU ALU1(
 .SrcB(SrcB),
 .ALUControl(ALUControl),
 .ALUResult(ALUResult),
-.Zero(Zero)
+.Zero(Zero),
+.Negative(Negative)
 );
 
 //ALUDecoder 
@@ -64,8 +67,16 @@ ALUDecoder ALUDecoder1(
 //BranchJump
 BranchJump BranchJump1(
 .Branch(Branch),
+.Negative(Negative),
+.Cond_Src(Cond_Src),
 .Zero(Zero),
 .PCSrc(PCSrc)
+);
+//Branch Decoder
+BranchDecoder BranchDecoder1(
+    .funct3(RD[14:12]),
+    .op(RD[6:0]),
+    .Cond_Src(Cond_Src)
 );
 
 //DataMemory

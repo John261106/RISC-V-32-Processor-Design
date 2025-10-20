@@ -2,7 +2,7 @@ module BranchJump(
     input wire Branch,
     input wire Zero,
     input wire Negative,
-    input wire Cond_Src[1:0],
+    input wire[1:0] Cond_Src,
     output reg PCSrc
 );
 
