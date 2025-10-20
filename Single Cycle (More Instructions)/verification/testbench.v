@@ -26,7 +26,7 @@ module TopModule_tb;
 
         // Apply reset
         RST = 1;
-        #60
+        #120;
 
        
         // Finish simulation

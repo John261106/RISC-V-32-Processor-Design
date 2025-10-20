@@ -4,7 +4,7 @@ module ALU(
     input wire [2:0] ALUControl,
     output reg [31:0] ALUResult,
     output reg Zero,
-    output reg NonNegative
+    output reg Negative
 );
 
 always @(*) begin
@@ -21,8 +21,7 @@ always @(*) begin
 	// deafult case is zero
     endcase
 
-    NonNegative = (SrcA - SrcB >= 0) ? 1 : 0;
-    Negative = ~NonNegative;
+    Negative = ~((SrcA - SrcB >= 0) ? 1 : 0);
     Zero = (ALUResult == 32'b0) ? 1 : 0;
     
 end

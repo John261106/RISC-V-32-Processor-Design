@@ -7,7 +7,6 @@ output reg ALUSrc,
 output reg [1:0] ImmSrc,
 output reg RegWrite,
 output reg Branch
-
 );
 
 always@(*) begin
@@ -51,7 +50,7 @@ case (op)
 
         // I-Type ALU instructions
         7'b0010011: begin 
-            RegWrite =1b'1;
+            RegWrite =1'b1;
             MemWrite =1'b0;
             ALUOp =2'b10; //doesnt matter becuase we modified the ALU decoder will see about this later
             Branch =1'b0;
@@ -65,16 +64,17 @@ case (op)
         7'b1101111: begin
             RegWrite=1'b1;
             MemWrite=1'b0;
-            ALUOp =2'b11 //doesnt matter because of the same reason
-            Branch = 1'b1;
-            ALUSrc= 1'b1;
+            ALUOp =2'b11; //doesnt matter because of the same reason
+            Branch = 1'b0;
+            ALUSrc= 1'bx;
             ResultSrc =2'b10;
+            ImmSrc=2'b11;
         end
 
         //need to add jalr instruction //hardware modification needed
 
 
-        //beq
+        //branch type
         7'b1100011 : begin
             RegWrite = 1'b0;
             ImmSrc = 2'b10;
