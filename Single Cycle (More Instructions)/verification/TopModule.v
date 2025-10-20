@@ -34,7 +34,7 @@ wire [6:0] op;
 wire [2:0] funct3;
 wire [6:0] funct7; //we are considering only one bit of funct7, for the basic instruction set we planned to implement that is enough for now
 wire RegWrite, ALUSrc, MemWrite, Branch;
-wire  ResultSrc;
+wire  [1:0]ResultSrc;
 wire [1:0] ALUOp;
 
 
@@ -155,6 +155,7 @@ SrcBMux SrcBMux1 (
 );
 
 ResultMux ResultMux1 (
+    .PCPlus4(PCPlus4),
     .ALUResult(ALUResult),
     .ReadData(RD3),
     .ResultSrc(ResultSrc),
