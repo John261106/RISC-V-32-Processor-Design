@@ -22,7 +22,7 @@ always @(*) begin
         // Not executed if jump works
         32'd32: RD = 32'b00000000111100110000010100010011; // addi x10, x6, 15  ; skipped if jal works
         // Jump target (PC=40)
-        32'd40: RD = 32'b00000000001001000000010110010011; // addi x11, x8, 2   ; executes after jal
+        32'd40: RD = 32'b00000000001001001000010110010011; // addi x11, x9, 2   ; executes after jal
         // ADD final test
         32'd44: RD = 32'b00000000101101000000011000110011; // add x12, x8, x11  ; final add
         default: RD = 32'bx;

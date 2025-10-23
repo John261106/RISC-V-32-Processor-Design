@@ -11,6 +11,7 @@ always @(*) begin
         2'b00: PCSrc=Branch & Zero;//beq
         2'b01: PCSrc=Branch & Negative;//blt
         2'b10: PCSrc=Branch & (~Negative);//bge
+        2'b11: PCSrc=1;// for jalr and jal its always 1
     endcase
 end
 
