@@ -9,7 +9,7 @@ input wire RST
 
 // Program Counter logic
 wire [31:0] PC, PCNext, PCPlus4, PCTarget;
-wire PCSrc;
+wire [1:0]PCSrc;
 
 //Instruction Memory
 wire [31:0] RD;
@@ -38,7 +38,7 @@ wire RegWrite, ALUSrc, MemWrite, Branch;
 wire  [1:0]ResultSrc;
 wire [1:0] ALUOp;
 //Branch Decoder
-wire [1:0] Cond_Src;
+wire [2:0] Cond_Src;
 
 // Data Memory
           // memory write enable
@@ -122,6 +122,7 @@ PCMux PCMux1(
 .PCSrc(PCSrc),
 .PCPlus4(PCPlus4),
 .PCTarget(PCTarget),
+.ALUResult(ALUResult),
 .PCNext(PCNext)
 );
 

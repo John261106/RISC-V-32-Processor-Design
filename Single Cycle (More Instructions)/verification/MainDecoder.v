@@ -72,7 +72,16 @@ case (op)
         end
 
         //need to add jalr instruction //hardware modification needed
-
+        //jalr instruction
+        7'b1100111: begin
+            RegWrite=1'b1;
+            MemWrite=1'b0;
+            ALUOp =2'b11; //doesnt matter because of the same reason
+            Branch = 1'b0;
+            ALUSrc= 1'b1;
+            ResultSrc =2'b10;
+            ImmSrc=2'b00;
+        end
 
         //branch type
         7'b1100011 : begin

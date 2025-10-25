@@ -38,6 +38,9 @@ always @(*) begin
         17'b0000011_010_???????: ALUControl = 3'b000; // ADD used for LW
         17'b0100011_010_???????: ALUControl = 3'b000; // ADD used for SW
         // ------------------------------------------------------
+
+        //------------------jalr------------------------------------------
+        17'b1100111_000_???????: ALUControl = 3'b000;//add used for pc=rs1+imm;
         default: ALUControl = 3'bxxx; // Undefined operation
 
     endcase
