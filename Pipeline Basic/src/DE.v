@@ -12,6 +12,7 @@ input wire [4:0] RdD,
 input wire [31:0] ImmExtD
 input wire [31:0] RD1D,
 input wire [31:0] RD2D,
+input wire RST,
 
 output wire RegWriteE,
 output wire [1:0] ResultSrcE,
@@ -39,19 +40,34 @@ reg [4:0]  Rd;
 reg [31:0] ImmExt;
 
     // Sequential logic (pipeline register update)
-    always @(posedge CLK) begin
-        RegWrite = RegWriteD;
-        ResultSrc = ResultSrcD;
-        MemWrite = MemWriteD;
-        Branch = BranchD;
-        ALUControl = ALUControlD;
-        ALUSrc = ALUSrcD;
-        RD1 = RD1D;
-        RD2 = RD2D;
-        PC = PCD;
-        Rd = RdD;
-        ImmExt = ImmExtD;
+always @(posedge CLK) begin
+    if (!RST) begin  // Active-low reset
+        RegWrite <= 0;
+        ResultSrc <= 0;
+        MemWrite <= 0;
+        Branch <= 0;
+        ALUControl <= 0;
+        ALUSrc <= 0;
+        RD1 <= 0;
+        RD2 <= 0;
+        PC <= 0;
+        Rd <= 0;
+        ImmExt <= 0;
     end
+    else begin
+        RegWrite <= RegWriteD;
+        ResultSrc <= ResultSrcD;
+        MemWrite <= MemWriteD;
+        Branch <= BranchD;
+        ALUControl <= ALUControlD;
+        ALUSrc <= ALUSrcD;
+        RD1 <= RD1D;
+        RD2 <= RD2D;
+        PC <= PCD;
+        Rd <= RdD;
+        ImmExt <= ImmExtD;
+    end
+end
 
     // Continuous assignments to outputs
     assign RegWriteE = RegWrite;
