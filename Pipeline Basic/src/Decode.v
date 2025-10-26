@@ -8,11 +8,12 @@ input wire RST, //active-low reset synchronous
 input wire WE3,
 input wire [4:0] A1,
 input wire [4:0] A2,
-input wire [4:0] A3,
+input wire [4:0] A3,//need to connect to RdW
 input wire [31:0] WD3,
 input wire [24:0] Imm,
 input wire CLK,
-
+input wire [31:0] WD3 // need to connect it to ResultW
+input wire [4:0] Rd11_7 // this will be Instr[11:7]
 //OUTPUT registers
 output reg RegWriteD,
 output reg ResultSrcD, //NOTE : WE NEED ONE BIT ONLY UNLIKE TB PIC BECUASE JUST 2 CASES IN MUX
@@ -70,12 +71,12 @@ case (op)
 
         //beq
         7'b1100011 : begin
-            RegWrite = 1'b0;
-            ImmSrc = 2'b10;
-            ALUSrc = 1'b0;
-            MemWrite = 1'b0;
+            RegWriteD = 1'b0;
+            ImmSrcD = 2'b10;
+            ALUSrcD = 1'b0;
+            MemWriteD = 1'b0;
             ALUOp = 2'b01;
-            Branch = 1'b1;
+            BranchD = 1'b1;
             ResultSrcD = 1'bx;
         end
 
@@ -104,7 +105,7 @@ always @(*) begin
                 default: ALUControlD = 3'b000;
             endcase
         end
-        default: ALUControlD = 3'b000;
+        default: ALUControlD = 3'bxxx;
     endcase
 end
 
@@ -123,7 +124,7 @@ end
             // B-type: {sign bits, bits[31], bits[7], bits[30:25], bits[11:8], 0}
             2'b10: ImmExtD = {{19{Imm[24]}}, Imm[0], Imm[23:18], Imm[4:1], 1'b0};
 
-            default: ImmExtD = 32'b0;
+            default: ImmExtD = 32'bx;
         endcase
     end
 
@@ -150,6 +151,10 @@ end
             //Write only if not register 0
             x[A3] <= WD3;
         end
+    end
+
+    always @ (*) begin
+        RdD=Rd11_7; 
     end
 
 endmodule
