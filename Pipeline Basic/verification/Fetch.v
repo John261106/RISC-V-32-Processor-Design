@@ -13,6 +13,8 @@ wire [31:0] PCPlus4F;
 wire [31:0] A;
 reg [31:0] PCF';//reg since used in always block
 
+assign A = PCF;
+
 case (A[31:0]) 
     32'd0: RD = 32'b00000000010000000010000010000011; // lw x1 x0(4)
     32'd4: RD = 32'b00000000100000000010000100000011; // lw x2 x0(8)
