@@ -15,7 +15,7 @@ input wire CLK,
 
 //OUTPUT registers
 output reg RegWriteD,
-output reg [1:0] ResultSrcD,
+output reg ResultSrcD, //NOTE : WE NEED ONE BIT ONLY UNLIKE TB PIC BECUASE JUST 2 CASES IN MUX
 output reg MemWriteD,
 output reg BranchD,
 output reg [2:0] ALUControlD;
