@@ -11,7 +11,6 @@ input wire [4:0] A2,
 input wire [4:0] A3,//need to connect to RdW
 input wire [31:0] WD3,
 input wire [24:0] Imm,
-input wire CLK,
 input wire [31:0] WD3 // need to connect it to ResultW
 input wire [4:0] Rd11_7 // this will be Instr[11:7]
 //OUTPUT registers
