@@ -1,21 +1,20 @@
 // following name from diagram
 
 module Fetch(
-input wire PCSrcE,
+input wire [1:0] PCSrcE,
 input wire CLK,
 input wire RST,
 input wire[31:0] PCTargetE,
+input wire[31:0] ResultW,
 output reg [31:0] RD,
 output reg [31:0] PCF,
 output reg [31:0] PCPlus4F
 );
-wire [31:0] PCPlus4F;
-wire [31:0] A;
-reg [31:0] PCF';//reg since used in always block
 
-assign A = PCF;
+reg [31:0] PCNextF;//reg since used in always block
 
-case (A[31:0]) 
+always@(*) begin
+case (PCF[31:0]) 
     32'd0: RD = 32'b00000000010000000010000010000011; // lw x1 x0(4)
     32'd4: RD = 32'b00000000100000000010000100000011; // lw x2 x0(8)
     32'd8: RD = 32'b00000000000100010000000110110011; //add x3, x2 x1
@@ -25,6 +24,8 @@ case (A[31:0])
 //branch to 24th instruction at the 16th instr
 endcase
 
+end
+
 
 
 always@(posedge CLK) begin 
@@ -33,16 +34,17 @@ PCF <= 0;
 end
 
 else begin
-PCF <= PCF';
+PCF <= PCNextF;
 end
 end
 
 //A simple if-else statement is used which will decide PCNext = PCTarget or PCPlus4
 always@(*) begin
 case(PCSrcE)
-    1'b0 : PCF' <= PCPlus4F;
-    1'b1 : PCF' <= PCTargetE;
-    default : PCF' <= PCPlus4F;
+    2'b00 : PCNextF <= PCPlus4F;
+    2'b01 : PCNextF <= PCTargetE;
+    2'b10 : PCNextF <= ResultW;
+    default : PCNextF <= PCPlus4F;
 endcase
 end
 
