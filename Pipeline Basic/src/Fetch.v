@@ -5,7 +5,7 @@ input wire [1:0] PCSrcE,
 input wire CLK,
 input wire RST,
 input wire[31:0] PCTargetE,
-input wire[31:0] ResultW,
+input wire[31:0] ALUResultE,
 output reg [31:0] RD,
 output reg [31:0] PCF,
 output reg [31:0] PCPlus4F
@@ -43,7 +43,7 @@ always@(*) begin
 case(PCSrcE)
     2'b00 : PCNextF <= PCPlus4F;
     2'b01 : PCNextF <= PCTargetE;
-    2'b10 : PCNextF <= ResultW;
+    2'b10 : PCNextF <= ALUResultE;
     default : PCNextF <= PCPlus4F;
 endcase
 end
