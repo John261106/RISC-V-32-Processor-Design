@@ -4,7 +4,6 @@ input wire CLK,
 input wire RegWriteD, 
 input wire [1:0] ResultSrcD, 
 input wire MemWriteD, 
-input wire BranchD, 
 input wire [2:0] ALUControlD, 
 input wire ALUSrcD, 
 input wire PCD, 
@@ -13,7 +12,8 @@ input wire [31:0] ImmExtD
 input wire [31:0] RD1D,
 input wire [31:0] RD2D,
 input wire RST,
-
+input wire [31:0] PCPlus4D,
+input wire [2:0] Cond_SrcD,
 output wire RegWriteE,
 output wire [1:0] ResultSrcE,
 output wire MemWriteE,
@@ -24,7 +24,9 @@ output wire [31:0] RD1E,
 output wire [31:0] RD2E,
 output wire [31:0] PCE,
 output wire [4:0]  RdE,
-output wire [31:0] ImmExtE
+output wire [31:0] ImmExtE,
+output wire [31:0] PCPlus4E,
+output wire [31:0] Cond_SrcE
 );
 
 reg RegWrite;
@@ -45,8 +47,8 @@ always @(posedge CLK) begin
         RegWrite <= 0;
         ResultSrc <= 0;
         MemWrite <= 0;
-        Branch <= 0;
-        ALUControl <= 0;
+        Cond_Src <= 0;
+	ALUControl <= 0;
         ALUSrc <= 0;
         RD1 <= 0;
         RD2 <= 0;
@@ -58,7 +60,7 @@ always @(posedge CLK) begin
         RegWrite <= RegWriteD;
         ResultSrc <= ResultSrcD;
         MemWrite <= MemWriteD;
-        Branch <= BranchD;
+        Cond_Src <=Cond_SrcD;
         ALUControl <= ALUControlD;
         ALUSrc <= ALUSrcD;
         RD1 <= RD1D;
@@ -73,8 +75,8 @@ end
     assign RegWriteE = RegWrite;
     assign ResultSrcE = ResultSrc;
     assign MemWriteE = MemWrite;
-    assign BranchE = Branch;
     assign ALUControlE = ALUControl;
+    assign Cond_SrcE = Cond_SrcD;
     assign ALUSrcE = ALUSrc;
     assign RD1E = RD1;
     assign RD2E = RD2;
