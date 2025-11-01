@@ -8,7 +8,7 @@ input wire [2:0] ALUControlD,
 input wire ALUSrcD, 
 input wire PCD, 
 input wire [4:0] RdD, 
-input wire [31:0] ImmExtD
+input wire [31:0] ImmExtD,
 input wire [31:0] RD1D,
 input wire [31:0] RD2D,
 input wire RST,

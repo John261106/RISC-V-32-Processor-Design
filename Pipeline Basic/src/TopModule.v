@@ -1,4 +1,4 @@
-module top_module(
+module TopModule(
 input wire CLK,
 input wire RST
 );
@@ -6,8 +6,6 @@ input wire RST
 //declare all the top module signals here
 
 // Fetch stage signals
-wire PCSrcE;
-wire [31:0] PCTargetE;
 wire [31:0] ALUResult;
 wire [31:0] RD;
 wire [31:0] PCF;
@@ -45,7 +43,7 @@ wire [31:0] RD2E;
 wire [31:0] PCE;
 wire [31:0] ImmExtE;
 wire [31:0] PCTargetE;
-wire PCSrcE;
+wire [1:0] PCSrcE;
 wire [31:0] ALUResultE;
 wire [31:0] WriteDataE;
 

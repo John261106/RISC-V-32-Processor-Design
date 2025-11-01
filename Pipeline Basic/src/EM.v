@@ -44,7 +44,7 @@ module EM (
             Rd <= RdE;
             PCPlus4 <= PCPlus4E;
             WriteData <= WriteDataE;
-	    ALUResult <= ALUResultE
+	    ALUResult <= ALUResultE;
         end
     end
 
