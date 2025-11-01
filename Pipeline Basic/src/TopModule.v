@@ -6,7 +6,7 @@ input wire RST
 //declare all the top module signals here
 
 // Fetch stage signals
-wire [31:0] ALUResult;
+wire [31:0] ALUResultE;
 wire [31:0] RD;
 wire [31:0] PCF;
 wire [31:0] PCPlus4F;
@@ -26,7 +26,7 @@ wire [4:0] Rd11_7;
 wire RegWriteD;
 wire [1:0] ResultSrcD;
 wire MemWriteD;
-wire Cond_SrcD;
+wire [2:0] Cond_SrcD;
 wire [3:0] ALUControlD;
 wire ALUSrcD;
 wire [31:0] RD1;
@@ -35,7 +35,7 @@ wire [31:0] ImmExtD;
 wire [4:0] RdD;
 
 // Execute stage signals
-wire Cond_SrcE;
+wire [2:0] Cond_SrcE;
 wire [3:0] ALUControlE;
 wire ALUSrcE;
 wire [31:0] RD1E;
@@ -44,7 +44,6 @@ wire [31:0] PCE;
 wire [31:0] ImmExtE;
 wire [31:0] PCTargetE;
 wire [1:0] PCSrcE;
-wire [31:0] ALUResultE;
 wire [31:0] WriteDataE;
 
 // Memory stage signals
@@ -56,14 +55,14 @@ wire [31:0] ALUResultM1;
 
 
 Fetch Fetch1(
-.PCSrcE(PCSrc),
+.PCSrcE(PCSrcE),
 .CLK(CLK),
 .RST(RST),
-.PCTargetE(PCTarget),
-.ALUResultE(ALUResult),
+.PCTargetE(PCTargetE),
+.ALUResultE(ALUResultE),
 .RD(RD),
-.PCF(PC),
-.PCPlus4F(PCPlus4)
+.PCF(PCF),
+.PCPlus4F(PCPlus4F)
 );
 
 Decode Decode1(
