@@ -13,7 +13,7 @@ module EM (
     output wire [1:0] ResultSrcM,
     output wire MemWriteM,
     output wire [31:0] ALUResultM,
-    output wire [5:0] RdM,
+    output wire [4:0] RdM,
     output wire [31:0] PCPlus4M,
     output wire [31:0] WriteDataM
 );

@@ -6,6 +6,7 @@ input wire RST
 //declare all the top module signals here
 // After your existing signal declarations, add:
 
+wire [31:0] ResultW;
 // Decode stage pipeline registers
 wire [31:0] InstrD;
 wire [31:0] PCD;
@@ -223,12 +224,16 @@ EM EM1 (
     .RdM(RdM),
     .PCPlus4M(PCPlus4M),
     .WriteDataM(WriteDataM)
-);	
+);
 
-
-
+WriteBack WriteBack1(
+.ALUResultW(ALUResultW),
+.ReadDataW(ReadDataW),
+.ResultSrcW(ResultSrcW),
+.PCPlus4W(PCPlus4W),
+.ResultW(ResultW)
+);
 	
-
 
 
 
