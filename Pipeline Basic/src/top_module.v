@@ -6,55 +6,55 @@ input wire RST
 //declare all the top module signals here
 
 // Fetch stage signals
-reg PCSrc;
-reg [31:0] PCTarget;
-reg [31:0] ALUResult;
-reg [31:0] RD;
-reg [31:0] PC;
-reg [31:0] PCPlus4;
+wire PCSrcE;
+wire [31:0] PCTargetE;
+wire [31:0] ALUResult;
+wire [31:0] RD;
+wire [31:0] PCF;
+wire [31:0] PCPlus4F;
 
 // Decode stage signals
-reg WE3;
-reg [4:0] A1;
-reg [4:0] A2;
-reg [4:0] A3;
-reg [31:0] WD3;
-reg [31:0] Imm;
-reg [6:0] op;
-reg [2:0] funct3;
-reg [6:0] funct7;
-reg [4:0] Rd11_7;
+wire WE3;
+wire [4:0] A1;
+wire [4:0] A2;
+wire [4:0] A3;
+wire [31:0] WD3;
+wire [31:0] Imm;
+wire [6:0] op;
+wire [2:0] funct3;
+wire [6:0] funct7;
+wire [4:0] Rd11_7;
 
-reg RegWriteD;
-reg [1:0] ResultSrcD;
-reg MemWriteD;
-reg Cond_SrcD;
-reg [3:0] ALUControlD;
-reg ALUSrcD;
-reg [31:0] RD1;
-reg [31:0] RD2;
-reg [31:0] ImmExtD;
-reg [4:0] RdD;
+wire RegWriteD;
+wire [1:0] ResultSrcD;
+wire MemWriteD;
+wire Cond_SrcD;
+wire [3:0] ALUControlD;
+wire ALUSrcD;
+wire [31:0] RD1;
+wire [31:0] RD2;
+wire [31:0] ImmExtD;
+wire [4:0] RdD;
 
 // Execute stage signals
-reg Cond_SrcE;
-reg [3:0] ALUControlE;
-reg ALUSrcE;
-reg [31:0] RD1E;
-reg [31:0] RD2E;
-reg [31:0] PCE;
-reg [31:0] ImmExtE;
-reg [31:0] PCTargetE;
-reg PCSrcE;
-reg [31:0] ALUResultE;
-reg [31:0] WriteDataE;
+wire Cond_SrcE;
+wire [3:0] ALUControlE;
+wire ALUSrcE;
+wire [31:0] RD1E;
+wire [31:0] RD2E;
+wire [31:0] PCE;
+wire [31:0] ImmExtE;
+wire [31:0] PCTargetE;
+wire PCSrcE;
+wire [31:0] ALUResultE;
+wire [31:0] WriteDataE;
 
 // Memory stage signals
-reg MemWriteM;
-reg [31:0] ALUResultM;
-reg [31:0] WriteDataM;
-reg [31:0] RD3;
-reg [31:0] ALUResultM1;
+wire MemWriteM;
+wire [31:0] ALUResultM;
+wire [31:0] WriteDataM;
+wire [31:0] RD3;
+wire [31:0] ALUResultM1;
 
 
 Fetch Fetch1(
