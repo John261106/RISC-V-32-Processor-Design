@@ -27,7 +27,7 @@ wire RegWriteD;
 wire [1:0] ResultSrcD;
 wire MemWriteD;
 wire [2:0] Cond_SrcD;
-wire [3:0] ALUControlD;
+wire [2:0] ALUControlD;
 wire ALUSrcD;
 wire [31:0] RD1;
 wire [31:0] RD2;
@@ -36,7 +36,7 @@ wire [4:0] RdD;
 
 // Execute stage signals
 wire [2:0] Cond_SrcE;
-wire [3:0] ALUControlE;
+wire [2:0] ALUControlE;
 wire ALUSrcE;
 wire [31:0] RD1E;
 wire [31:0] RD2E;
