@@ -75,8 +75,8 @@ Decode Decode1(
 .CLK(CLK),
 .RST(RST), //active-low reset synchronous
 .WE3(WE3),
-.A1(A1),
-.A2(A2),
+.A1(RD[19:15]),
+.A2(RD[24:20]),
 .A3(A3),//need to connect to RdW
 .Imm(RD[31:7]),
 .WD3(WD3), // need to connect it to ResultW
