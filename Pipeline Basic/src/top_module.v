@@ -118,7 +118,86 @@ Memory Memory1 (
 .ALUResultM1(ALUResultM1)
 );
 
+FD FD1 (
+    .RD(RD),
+    .PCF(PCF),
+    .PCPlus4F(PCPlus4F),
+    .RST(RST),
+    .CLK(CLK),
+    .InstrD(InstrD),
+    .PCD(PCD),
+    .PCPlus4D(PCPlus4D)
+);
 
+DE DE1 (
+    .CLK(CLK),
+    .RST(RST),
+
+    .RegWriteD(RegWriteD),
+    .ResultSrcD(ResultSrcD),
+    .MemWriteD(MemWriteD),
+    .ALUControlD(ALUControlD),
+    .ALUSrcD(ALUSrcD),
+    .PCD(PCD),
+    .RdD(RdD),
+    .ImmExtD(ImmExtD),
+    .RD1D(RD1),
+    .RD2D(RD2),
+    .PCPlus4D(PCPlus4D),
+    .Cond_SrcD(Cond_SrcD),
+
+    .RegWriteE(RegWriteE),
+    .ResultSrcE(ResultSrcE),
+    .MemWriteE(MemWriteE),
+    .BranchE(BranchE),
+    .ALUControlE(ALUControlE),
+    .ALUSrcE(ALUSrcE),
+    .RD1E(RD1E),
+    .RD2E(RD2E),
+    .PCE(PCE),
+    .RdE(RdE),
+    .ImmExtE(ImmExtE),
+    .PCPlus4E(PCPlus4E),
+    .Cond_SrcE(Cond_SrcE)
+);
+
+	MW MW1 (
+    .CLK(CLK),
+    .RST(RST),
+    .RegWriteM(RegWriteM),
+    .ResultSrcM(ResultSrcM),
+    .ALUResultM(ALUResultM),
+    .ReadDataM(ReadDataM),
+    .RdM(RdM),
+    .PCPlus4M(PCPlus4M),
+
+    .RegWriteW(RegWriteW),
+    .ResultSrcW(ResultSrcW),
+    .ALUResultW(ALUResultW),
+    .ReadDataW(ReadDataW),
+    .RdW(RdW),
+    .PCPlus4W(PCPlus4W)
+);
+
+EM EM1 (
+    .CLK(CLK),
+    .RST(RST),
+    .RegWriteE(RegWriteE),
+    .ResultSrcE(ResultSrcE),
+    .MemWriteE(MemWriteE),
+    .ALUResultE(ALUResultE),
+    .PCPlus4E(PCPlus4E),
+    .RdE(RdE),
+    .WriteDataE(WriteDataE),
+
+    .RegWriteM(RegWriteM),
+    .ResultSrcM(ResultSrcM),
+    .MemWriteM(MemWriteM),
+    .ALUResultM(ALUResultM),
+    .RdM(RdM),
+    .PCPlus4M(PCPlus4M),
+    .WriteDataM(WriteDataM)
+);	
 
 
 
