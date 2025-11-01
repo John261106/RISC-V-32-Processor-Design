@@ -4,6 +4,35 @@ input wire RST
 );
 
 //declare all the top module signals here
+// After your existing signal declarations, add:
+
+// Decode stage pipeline registers
+wire [31:0] InstrD;
+wire [31:0] PCD;
+wire [31:0] PCPlus4D;
+
+// Execute stage signals (add to existing)
+wire RegWriteE;
+wire [1:0] ResultSrcE;  // Should be 2 bits
+wire MemWriteE;
+wire BranchE;
+wire [4:0] RdE;         // Should be 5 bits
+wire [31:0] PCPlus4E;
+
+// Memory stage signals (add to existing)
+wire RegWriteM;
+wire [1:0] ResultSrcM;  // Should be 2 bits
+wire [31:0] ReadDataM;
+wire [4:0] RdM;         // Should be 5 bits
+wire [31:0] PCPlus4M;
+
+// Writeback stage signals
+wire RegWriteW;
+wire [1:0] ResultSrcW;  // Should be 2 bits
+wire [31:0] ALUResultW;
+wire [31:0] ReadDataW;
+wire [4:0] RdW;         // Should be 5 bits
+wire [31:0] PCPlus4W;
 
 // Fetch stage signals
 wire [31:0] ALUResultE;

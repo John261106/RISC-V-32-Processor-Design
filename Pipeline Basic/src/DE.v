@@ -6,7 +6,7 @@ input wire [1:0] ResultSrcD,
 input wire MemWriteD, 
 input wire [2:0] ALUControlD, 
 input wire ALUSrcD, 
-input wire PCD, 
+input wire [31:0] PCD, 
 input wire [4:0] RdD, 
 input wire [31:0] ImmExtD,
 input wire [31:0] RD1D,
@@ -26,7 +26,7 @@ output wire [31:0] PCE,
 output wire [4:0]  RdE,
 output wire [31:0] ImmExtE,
 output wire [31:0] PCPlus4E,
-output wire [31:0] Cond_SrcE
+output wire [2:0] Cond_SrcE
 );
 
 reg RegWrite;
@@ -40,6 +40,7 @@ reg [31:0] RD2;
 reg [31:0] PC;
 reg [4:0]  Rd;
 reg [31:0] ImmExt;
+reg [31:0] Cond_Src;
 
     // Sequential logic (pipeline register update)
 always @(posedge CLK) begin
