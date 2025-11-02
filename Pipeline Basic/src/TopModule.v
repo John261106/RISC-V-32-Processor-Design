@@ -19,6 +19,7 @@ wire MemWriteE;
 wire BranchE;
 wire [4:0] RdE;         // Should be 5 bits
 wire [31:0] PCPlus4E;
+wire [31:0] ALUResultE;
 
 // Memory stage signals (add to existing)
 wire RegWriteM;
@@ -36,10 +37,10 @@ wire [4:0] RdW;         // Should be 5 bits
 wire [31:0] PCPlus4W;
 
 // Fetch stage signals
-wire [31:0] ALUResultE;
-wire [31:0] RD;
-wire [31:0] PCF;
-wire [31:0] PCPlus4F;
+
+wire [31:0] RD; //done
+wire [31:0] PCF; //done 
+wire [31:0] PCPlus4F;//done
 
 // Decode stage signals
 wire WE3;
@@ -96,18 +97,18 @@ Fetch Fetch1(
 );
 
 Decode Decode1(
-.op(RD[6:0]),
-.funct3(RD[14:12]),
-.funct7(RD[31:25]),
+.op(InstrD[6:0]),
+.funct3(InstrD[14:12]),
+.funct7(InstrD[31:25]),
 .CLK(CLK),
 .RST(RST), //active-low reset synchronous
 .WE3(WE3),
-.A1(RD[19:15]),
-.A2(RD[24:20]),
+.A1(InstrD[19:15]),
+.A2(InstrD[24:20]),
 .A3(A3),//need to connect to RdW
-.Imm(RD[31:7]),
+.Imm(InstrD[31:7]),
 .WD3(WD3), // need to connect it to ResultW
-.Rd11_7(RD[11:7]), // this will be Instr[11:7]
+.Rd11_7(InstrD[11:7]), // this will be Instr[11:7]
 
 .RegWriteD(RegWriteD),
 .ResultSrcD(ResultSrcD), 
