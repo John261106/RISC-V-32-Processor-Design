@@ -11,7 +11,7 @@ input wire [4:0] RdD,
 input wire [31:0] ImmExtD,
 input wire [31:0] RD1D,
 input wire [31:0] RD2D,
-input wire RST,
+input wire RST,S
 input wire [31:0] PCPlus4D,
 input wire [2:0] Cond_SrcD,
 output wire RegWriteE,
@@ -41,7 +41,7 @@ reg [31:0] PC;
 reg [4:0]  Rd;
 reg [31:0] ImmExt;
 reg [31:0] Cond_Src;
-
+reg [31:0] PCPlus4;
     // Sequential logic (pipeline register update)
 always @(posedge CLK) begin
     if (!RST) begin  // Active-low reset
@@ -49,13 +49,14 @@ always @(posedge CLK) begin
         ResultSrc <= 0;
         MemWrite <= 0;
         Cond_Src <= 0;
-	ALUControl <= 0;
+	    ALUControl <= 0;
         ALUSrc <= 0;
         RD1 <= 0;
         RD2 <= 0;
         PC <= 0;
         Rd <= 0;
         ImmExt <= 0;
+        PCPlus4 <=0;
     end
     else begin
         RegWrite <= RegWriteD;
@@ -69,6 +70,7 @@ always @(posedge CLK) begin
         PC <= PCD;
         Rd <= RdD;
         ImmExt <= ImmExtD;
+        PCPlus4 <= PCPlus4D;
     end
 end
 
@@ -84,5 +86,7 @@ end
     assign PCE = PC;
     assign RdE = Rd;
     assign ImmExtE = ImmExt;
+    assign PCPlus4E =PCPlus4;
+
 
 endmodule

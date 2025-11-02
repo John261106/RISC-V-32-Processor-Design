@@ -23,7 +23,7 @@ always @(posedge CLK) begin
     end
     else begin
         Instr <= RD;
-        PC <= PCPlus4F;
+        PC <= PCF;
         PCPlus4 <= PCPlus4F;
     end
 end
