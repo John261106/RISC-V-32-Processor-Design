@@ -25,9 +25,10 @@ always @(*) begin
         
         32'd12:  RD = 32'b00000000001100010000001000110011; // add x4, x2, x3    ; x4 = 15
         
+        32'd16:  RD = 32'b00000000001100010000001000110011; // add x4, x2, x3    ; x4 = 15
+         
         // BLT test (x2 < x3 → branch taken)
-        // branch from PC=12 to PC=24 (+12 offset)
-        32'd16: RD = 32'b00000000001100010100011001100011; // blt x2, x3, +12   ; if taken → PC=24
+        32'd20: RD = 32'b00000000001100010100110001100011; // blt x2, x3, +12   ; PC -> PC + 24
         // Not executed if branch taken
 
 	 default: RD = 32'bx;
