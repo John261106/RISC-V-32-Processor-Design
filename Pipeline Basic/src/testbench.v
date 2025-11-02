@@ -26,7 +26,7 @@ module testbench;
 
         // Apply reset
         RST = 1;
-        #60
+        #300
 
        
         // Finish simulation

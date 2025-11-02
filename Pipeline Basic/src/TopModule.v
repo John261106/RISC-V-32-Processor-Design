@@ -195,7 +195,7 @@ DE DE1 (
     .RegWriteM(RegWriteM),
     .ResultSrcM(ResultSrcM),
     .ALUResultM(ALUResultM),
-    .ReadDataM(ReadDataM),
+    .ReadDataM(RD3),
     .RdM(RdM),
     .PCPlus4M(PCPlus4M),
 
