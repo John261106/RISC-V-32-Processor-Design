@@ -20,9 +20,6 @@ always @(*) begin
     case(ALUSrcE)
     1'b0:SrcB = RD2E;
     1'b1:SrcB = ImmExtE;
-
-
-
     endcase
 
 end
