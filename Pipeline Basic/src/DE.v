@@ -11,7 +11,7 @@ input wire [4:0] RdD,
 input wire [31:0] ImmExtD,
 input wire [31:0] RD1D,
 input wire [31:0] RD2D,
-input wire RST,S
+input wire RST,
 input wire [31:0] PCPlus4D,
 input wire [2:0] Cond_SrcD,
 output wire RegWriteE,
