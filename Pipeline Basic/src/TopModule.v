@@ -102,12 +102,12 @@ Decode Decode1(
 .funct7(InstrD[31:25]),
 .CLK(CLK),
 .RST(RST), //active-low reset synchronous
-.WE3(WE3),
+.WE3(RegWriteW),
 .A1(InstrD[19:15]),
 .A2(InstrD[24:20]),
-.A3(A3),//need to connect to RdW
+.A3(RdW),//need to connect to RdW
 .Imm(InstrD[31:7]),
-.WD3(WD3), // need to connect it to ResultW
+.WD3(ResultW), // need to connect it to ResultW
 .Rd11_7(InstrD[11:7]), // this will be Instr[11:7]
 
 .RegWriteD(RegWriteD),
@@ -194,7 +194,7 @@ DE DE1 (
     .RST(RST),
     .RegWriteM(RegWriteM),
     .ResultSrcM(ResultSrcM),
-    .ALUResultM(ALUResultM),
+    .ALUResultM(ALUResultM1),
     .ReadDataM(RD3),
     .RdM(RdM),
     .PCPlus4M(PCPlus4M),
