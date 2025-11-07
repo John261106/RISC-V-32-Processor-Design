@@ -79,7 +79,7 @@ end
     assign ResultSrcE = ResultSrc;
     assign MemWriteE = MemWrite;
     assign ALUControlE = ALUControl;
-    assign Cond_SrcE = Cond_SrcD;
+    assign Cond_SrcE = Cond_Src;
     assign ALUSrcE = ALUSrc;
     assign RD1E = RD1;
     assign RD2E = RD2;
