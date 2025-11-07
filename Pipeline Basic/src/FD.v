@@ -17,9 +17,9 @@ reg [31:0] PCPlus4;
     // Sequential logic 
 always @(posedge CLK) begin
     if (!RST) begin  // Active-low reset
-        Instr <= 0;
-        PC <= 0;
-        PCPlus4 <= 0;
+        Instr <= 32'bx;
+        PC <= 32'bx;
+        PCPlus4 <= 32'bx;
     end
     else begin
         Instr <= RD;

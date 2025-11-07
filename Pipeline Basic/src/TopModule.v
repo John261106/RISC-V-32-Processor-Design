@@ -16,7 +16,6 @@ wire [31:0] PCPlus4D;
 wire RegWriteE;
 wire [1:0] ResultSrcE;  // Should be 2 bits
 wire MemWriteE;
-wire BranchE;
 wire [4:0] RdE;         // Should be 5 bits
 wire [31:0] PCPlus4E;
 wire [31:0] ALUResultE;
@@ -177,7 +176,6 @@ DE DE1 (
     .RegWriteE(RegWriteE),
     .ResultSrcE(ResultSrcE),
     .MemWriteE(MemWriteE),
-    .BranchE(BranchE),
     .ALUControlE(ALUControlE),
     .ALUSrcE(ALUSrcE),
     .RD1E(RD1E),

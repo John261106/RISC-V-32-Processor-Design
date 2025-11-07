@@ -27,12 +27,12 @@ reg [31:0] PCPlus4;
 // Sequential logic (synchronous reset)
 always @(posedge CLK) begin
     if (!RST) begin
-        RegWrite  <= 1'b0;
-        ResultSrc <= 2'b00;
-        ALUResult <= 32'b0;
-        ReadData  <= 32'b0;
-        Rd        <= 5'b0;
-        PCPlus4   <= 32'b0;
+        RegWrite  <= 1'bx;
+        ResultSrc <= 2'bx;
+        ALUResult <= 32'bx;
+        ReadData  <= 32'bx;
+        Rd        <= 5'bx;
+        PCPlus4   <= 32'bx;
     end 
     else begin
         RegWrite  <= RegWriteM;

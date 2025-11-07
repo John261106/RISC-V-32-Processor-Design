@@ -30,13 +30,13 @@ module EM (
         // Synchronous reset + data latching
     always @(posedge CLK) begin
         if (!RST) begin
-            RegWrite <= 0;
-            ResultSrc <= 0;
-            MemWrite <= 0;
-            Rd <= 0;
-            PCPlus4 <= 0;
-            WriteData <= 0;
-	        ALUResult <= 0;
+            RegWrite <= 1'bx;
+            ResultSrc <= 2'bx;
+            MemWrite <= 1'bx;
+            Rd <= 5'bx;
+            PCPlus4 <= 32'bx;
+            WriteData <= 32'bx;
+	        ALUResult <= 32'bx;
         end else begin
             RegWrite <= RegWriteE;
             ResultSrc <= ResultSrcE;
