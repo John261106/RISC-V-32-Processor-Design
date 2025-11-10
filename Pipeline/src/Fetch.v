@@ -16,7 +16,7 @@ reg [31:0] PCNextF;//reg since used in always block
 always @(*) begin
     case (PCF[31:0])
             // Initialize registers
-        32'd0:  RD = 32'b00000000110000000000000101101111; // addi x2, x0, 5    ; x2 = 5
+        32'd0:  RD = 32'b00000001000000000000000101101111; // jalr x0 +
         
         32'd4:  RD = 32'b00000000101000000000000110010011; // addi x3, x0, 10   ; x3 = 10
         // ADD test
