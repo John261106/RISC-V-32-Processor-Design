@@ -1,3 +1,4 @@
+//solving data hazards with Forwarding/bypassing
 module HazardUnit(
 input wire [31:0] Rs1EH,
 input wire [31:0] Rs2EH,
