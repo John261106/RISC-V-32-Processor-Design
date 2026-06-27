@@ -35,13 +35,8 @@ The processor currently supports the following RV32I instructions:
 
 ---
 
-## Architecture Diagram
 
-Below is the complete single-cycle processor datapath:
 
-![Single Cycle Processor Diagram](images/complete_processor.jpeg)
-
----
 
 ## How do we simulate the design ?
 
