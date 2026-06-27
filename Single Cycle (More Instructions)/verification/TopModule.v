@@ -59,7 +59,7 @@ ALU ALU1(
 ALUDecoder ALUDecoder1(
 .funct3(RD[14:12]), //this is for only R,I,S,B instructions, funct3 not defined for U,J type
 .funct7(RD[31:25]), //this is for R type
-.op(RD[6:0]),
+.opcode(RD[6:0]),
 .ALUOp(ALUOp),
 .ALUControl(ALUControl)
 );

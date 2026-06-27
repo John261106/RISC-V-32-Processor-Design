@@ -24,7 +24,7 @@ module Extend(
             2'b11: ImmExt = {{11{Imm[24]}}, Imm[24], Imm[12:5], Imm[13], Imm[23:14], 1'b0};
 
 
-            default: ImmExt = 32'bx;
+            default: ImmExt = 32'b0;
         endcase
     end
 endmodule
