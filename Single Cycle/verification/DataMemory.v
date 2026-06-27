@@ -27,4 +27,4 @@ always @ (posedge CLK) begin
 end
 endmodule
 
-//CHANGED THE THING TO 4:0 (gpt suggested, not sure what was earlier issue)
+

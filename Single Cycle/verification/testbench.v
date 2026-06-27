@@ -26,11 +26,28 @@ module TopModule_tb;
 
         // Apply reset
         RST = 1;
-        #60
-
-       
+        #100
         // Finish simulation
         $finish;
+    end
+
+    always @ (posedge CLK) begin
+        $display("--------------------------------");
+        $display("PC = %d", uut.PC);
+        $display("Instruction = %h", uut.RD);
+        $display("ALU Result = %d", uut.ALUResult);
+        $display("Zero        = %b", uut.Zero);
+        $display("RegWrite = %b", uut.RegWrite);
+        $display("MemWrite    = %b", uut.MemWrite);
+        if (uut.RegWrite) begin
+            $display("WriteReg = x%0d", uut.RD[11:7]);
+            $display("WriteData(Register) = %d", uut.WD3);
+        end
+        if (uut.MemWrite)
+            $display("WriteData(Memory) = x%0d", uut.RD2);
+        
+
+
     end
 
     initial begin
