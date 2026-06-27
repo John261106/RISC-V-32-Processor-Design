@@ -59,6 +59,17 @@ case (op)
             //ResultSrc = 1'bx are we supposed to do like this or just leave
         end
 
+        default : begin
+             ResultSrc = 0;
+            MemWrite = 0;
+            ALUOp = 2'b00;
+            ALUSrc = 0;
+            ImmSrc = 2'b00;
+            RegWrite = 0;
+            Branch = 0;
+
+        end
+
     endcase
 end
 

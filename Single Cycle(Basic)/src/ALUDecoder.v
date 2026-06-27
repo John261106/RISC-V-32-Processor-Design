@@ -22,6 +22,7 @@ always @(*) begin
                     2'b01 : ALUControl = 3'b000; //add
                     2'b10 : ALUControl = 3'b000; //add
                     2'b11 : ALUControl = 3'b001; //sub
+                    default: ALUControl = 3'b000;
                 endcase
                 end
 
