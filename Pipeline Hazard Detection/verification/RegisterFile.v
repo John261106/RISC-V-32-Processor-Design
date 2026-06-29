@@ -17,7 +17,6 @@ module RegisterFile(
     always @(*) begin
     	RD1 = (A1 == 5'd0) ? 32'b0 : x[A1];
     	RD2 = (A2 == 5'd0) ? 32'b0 : x[A2];
-        x[9] <= 16'h2004;
     end
 
     
@@ -27,7 +26,11 @@ module RegisterFile(
             for (i = 0; i < 32; i = i + 1) begin
             x[i] <= 32'b0;
             end
-            x[9] = 16'h2004;
+            
+            x[1] <= 32'd10;
+            x[2] <= 32'd20;
+            x[4] <= 32'd5;
+            x[7] <= 32'd3;
         end 
         else if (WE3 && (A3 != 5'd0)) begin
             //Write only if not register 0
