@@ -1,44 +1,60 @@
-# RISC-V 32-bit Single Cycle Processor
+# RISC-V 32-bit Pipelined Processor (Without Hazard Handling)
 
-This Folder contains the Verilog implementation of a **RISC-V 32-bit Single Cycle Processor**.  
-The design follows the standard single-cycle datapath structure and supports a subset of RISC-V instructions.  
-add,sub,and,or,slt,beq,lw and sw is implemented.  
+This folder contains the Verilog implementation of a **32-bit RISC-V Pipelined Processor** based on the standard **5-stage pipeline architecture**. This design is a pipelined extension of the Advanced Single-Cycle Processor and supports the same instruction set. Hazard handling (data, control, and structural hazards) is **not implemented** in this version, making it suitable for understanding the basic pipelined datapath and its operation.
 
----
+## Supported Instructions
 
+### R-Type
 
+* `add`
+* `sub`
+* `xor`
+* `or`
+* `and`
+* `sll`
+* `srl`
+* `slt`
 
-##  Architecture Diagram
-Below is the complete single-cycle processor datapath:  
+### I-Type
 
-![Single Cycle Processor Diagram](images/complete_processor.jpeg)
+* `addi`
+* `xori`
+* `ori`
+* `andi`
 
----
-##  Control Unit
-The control unit consists of Main decoder and ALU decoder:  
+### Load/Store
 
-![Main Decoder Truth Table](images/control_unit.jpeg)
+* `lw`
+* `sw`
 
----
+### Branch
 
+* `beq`
+* `bne`
+* `blt`
+* `bge`
 
-##  Main Decoder Truth Table
-Below is the main decoder truth table:  
+### Jump
 
-![Main Decoder Truth Table](images/main_decoder_truth_table.jpeg)
+* `jal`
+* `jalr`
 
----
+## Pipeline Stages
 
-##  ALU Decoder Truth Table
-Below is the ALU decoder truth tabe:  
+The processor implements the standard 5-stage RISC-V pipeline:
 
-![Instruction Set](images/alu_decoder_truth_table.jpeg)
+1. **IF** – Instruction Fetch
+2. **ID** – Instruction Decode / Register Read
+3. **EX** – Execute / ALU Operations
+4. **MEM** – Data Memory Access
+5. **WB** – Register Write Back
 
-## How do we simulate the design ?
+## How to Simulate the Design
 
-install iverilog and gtkwave on your machine and then hit the following command
+Install **Icarus Verilog** and **GTKWave** on your machine, then execute the following commands:
 
 ```bash
-iverilog -o simv ALU.v ALUDecoder.v BranchJump.v DataMemory.v Extend.v InstructionMemory.v MainDecoder.v PC.v PCMux.v PCPlus4.v PCPlusImm.v RegisterFile.v SrcBMux.v ResultMux.v testbench.v TopModule.v
+iverilog -o simv *.v
 vvp simv
 gtkwave waveform.vcd
+```
