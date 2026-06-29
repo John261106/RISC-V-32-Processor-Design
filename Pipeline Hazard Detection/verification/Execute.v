@@ -25,6 +25,12 @@ module Execute (
     input  wire [31:0] PC_E,
     input  wire [31:0] PCPlus4_E,
 
+    //inputs needed for forwarding 
+    input wire [31:0] ALUResult_M,
+    input wire [31:0] Result_W,
+    input wire [1:0] ForwardA,
+    input wire [1:0] ForwardB,
+
     // ---- Outputs (to EM pipeline register) ----
     output wire        PCSrc_E,
     output wire [31:0] ALUResult_E,
@@ -35,9 +41,32 @@ module Execute (
 
 // ---- SrcB Mux : RD2 or ImmExt ----
 wire [31:0] SrcB;
+reg [31:0] ForwardA_Mux_out;
+reg [31:0] ForwardB_Mux_out;
+
+always @(*) begin
+    case(ForwardA)
+        2'b00: ForwardA_Mux_out = RD1_E;
+        2'b10: ForwardA_Mux_out = ALUResult_M;
+        2'b01: ForwardA_Mux_out = Result_W;
+        default: ForwardA_Mux_out = RD1_E;
+    endcase
+
+    case (ForwardB)
+        2'b00: ForwardB_Mux_out = RD2_E;
+        2'b10: ForwardB_Mux_out = ALUResult_M;
+        2'b01: ForwardB_Mux_out = Result_W;
+        default: ForwardB_Mux_out = RD2_E;
+    endcase
+end
+
+
+
+
+
 
 SrcBMux SrcB_inst (
-    .RD2   (RD2_E),
+    .RD2   (ForwardB_Mux_out),
     .ImmExt(ImmExt_E),
     .ALUSrc(ALUSrc_E),
     .SrcB  (SrcB)
@@ -47,7 +76,7 @@ SrcBMux SrcB_inst (
 wire Zero;
 
 ALU ALU_inst (
-    .SrcA      (RD1_E),
+    .SrcA      (ForwardA_Mux_out),
     .SrcB      (SrcB),
     .ALUControl(ALUControl_E),
     .ALUResult (ALUResult_E),
@@ -69,7 +98,7 @@ PCPlusImm PCImm_inst (
 );
 
 // WriteData just passes RD2 through to the EM register
-assign WriteData_E  = RD2_E;
+assign WriteData_E  = ForwardB_Mux_out;
 assign PCPlus4_out  = PCPlus4_E;
 
 endmodule

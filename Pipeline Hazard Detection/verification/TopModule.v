@@ -65,8 +65,8 @@ wire [31:0] ALUResult_E, WriteData_E, PCTarget_E, PCPlus4_EtoEM;
 // ===========================================================
 // ---- Wires : EM register outputs / Memory stage inputs ----
 // ===========================================================
-wire        RegWrite_M_reg, ResultSrc_M_reg, MemWrite_M_reg;
-wire [31:0] ALUResult_M, WriteData_M, PCPlus4_M, PCTarget_M_reg;
+wire        RegWrite_M, ResultSrc_M, MemWrite_M;
+wire [31:0] ALUResult_M, WriteData_M, PCPlus4_M;
 wire [4:0]  RD_M;
 
 // ===========================================================
@@ -87,6 +87,11 @@ wire [4:0]  RD_W;
 wire [31:0] Result_W;
 wire        RegWriteOut;
 wire [4:0]  RDOut;
+
+
+// forwarding unit 
+wire [1:0] ForwardA;
+wire [1:0] ForwardB;
 
 // ===========================================================
 // ---- STAGE 1 : FETCH ----
@@ -202,6 +207,10 @@ Execute Execute_stage (
     .ImmExt_E     (ImmExt_E),
     .PC_E         (PC_E),
     .PCPlus4_E    (PCPlus4_E),
+    .ALUResult_M (ALUResult_M),
+    .Result_W (Result_W),
+    .ForwardA(ForwardA),
+    .ForwardB(ForwardB),
     .PCSrc_E      (PCSrc_E),
     .ALUResult_E  (ALUResult_E),
     .WriteData_E  (WriteData_E),
@@ -227,9 +236,9 @@ EM EM_reg (
     .PCTarget_E   (PCTarget_E),
     .RD_E         (RD_E),
     // Control out
-    .RegWrite_M   (RegWrite_M_reg),
-    .ResultSrc_M  (ResultSrc_M_reg),
-    .MemWrite_M   (MemWrite_M_reg),
+    .RegWrite_M   (RegWrite_M),
+    .ResultSrc_M  (ResultSrc_M),
+    .MemWrite_M   (MemWrite_M),
     .PCSrc_M      (PCSrc_M),        // → Fetch stage
     // Data out
     .ALUResult_M  (ALUResult_M),
@@ -245,7 +254,7 @@ EM EM_reg (
 Memory Memory_stage (
     .CLK         (CLK),
     .RST         (RST),
-    .MemWrite_M  (MemWrite_M_reg),
+    .MemWrite_M  (MemWrite_M),
     .ALUResult_M (ALUResult_M),
     .WriteData_M (WriteData_M),
     .ReadData_M  (ReadData_M)
@@ -258,8 +267,8 @@ MW MW_reg (
     .CLK          (CLK),
     .RST          (RST),
     // Control in
-    .RegWrite_M   (RegWrite_M_reg),
-    .ResultSrc_M  (ResultSrc_M_reg),
+    .RegWrite_M   (RegWrite_M),
+    .ResultSrc_M  (ResultSrc_M),
     // Data in
     .ALUResult_M  (ALUResult_M),
     .ReadData_M   (ReadData_M),
@@ -288,6 +297,19 @@ WriteBack WB_stage (
     .Result_W    (Result_W),
     .RegWriteOut (RegWriteOut),
     .RDOut       (RDOut)
+);
+
+
+//Forwarding Unit 
+ForwardUnit FU(
+.RD_M(RD_M),
+.RD_W(RD_W),
+.RegWrite_M(RegWrite_M),
+.RegWrite_W(RegWrite_W),
+.RS1_E(RS1_E),
+.RS2_E(RS2_E),
+.ForwardA(ForwardA),
+.ForwardB(ForwardB)
 );
 
 endmodule
